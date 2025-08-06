@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
     Article findBySubject(String subject);
-    Article findBysubjectAndContent(String subject, String content);
+    Article findBySubjectAndContent(String subject, String content);
     List<Article> findBySubjectLike(String subject);
 }
