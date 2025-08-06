@@ -4,36 +4,56 @@
       layout:decorate="~{layout}">
 
 <div layout:fragment="content" class="container my-5">
-    <!-- 질문 -->
-    <h2 class="border-bottom py-2" th:text="${question.subject}"></h2>
-    <div class="card my-3">
+
+    <!-- 게시글 제목 -->
+    <h2 class="border-bottom pb-2 mb-4" th:text="${article.subject}">제목</h2>
+
+    <!-- 게시글 본문 -->
+    <div class="card mb-4">
         <div class="card-body">
-            <div class="card-text" style="white-space: pre-line;" th:text="${question.content}"></div>
-            <div class="d-flex justify-content-end">
-                <div class="badge bg-light text-dark p-2 text-start">
-                    <div th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></div>
-                </div>
+            <div class="card-text" style="white-space: pre-line;" th:text="${article.content}">내용</div>
+            <div class="d-flex justify-content-end mt-3">
+                <span class="badge bg-light text-dark p-2">
+                    <i class="bi bi-clock"></i>
+                    <span th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}">작성일</span>
+                </span>
             </div>
         </div>
     </div>
-    <!-- 답변의 갯수 표시 -->
-    <h5 class="border-bottom my-3 py-2"
-        th:text="|${#lists.size(question.answerList)}개의 답변이 있습니다.|"></h5>
-    <!-- 답변 반복 시작 -->
-    <div class="card my-3" th:each="answer : ${question.answerList}">
-        <div class="card-body">
-            <div class="card-text" style="white-space: pre-line;" th:text="${answer.content}"></div>
-            <div class="d-flex justify-content-end">
-                <div class="badge bg-light text-dark p-2 text-start">
-                    <div th:text="${#temporals.format(answer.createDate, 'yyyy-MM-dd HH:mm')}"></div>
-                </div>
+
+    <!-- 댓글 영역 -->
+    <h4 class="mb-3">댓글</h4>
+
+    <div th:if="${#lists.isEmpty(article.comentList)}">
+        <p class="text-muted">아직 등록된 댓글이 없습니다.</p>
+    </div>
+
+    <div class="mb-4" th:each="coment : ${article.comentList}">
+        <div class="card mb-2">
+            <div class="card-body">
+                <p class="card-text" th:text="${coment.content}">댓글 내용</p>
+                <div class="text-end text-muted small" th:text="${#temporals.format(coment.createDate, 'yyyy-MM-dd HH:mm')}">작성일시</div>
             </div>
         </div>
     </div>
-    <!-- 답변 반복 끝  -->
-    <!-- 답변 작성 -->
-    <form th:action="@{|/answer/create/${question.id}|}" method="post" class="my-3">
-        <textarea name="content" id="content" rows="10" class="form-control"></textarea>
-        <input type="submit" value="답변등록" class="btn btn-primary my-2">
-    </form>
+
+    <!-- 댓글 작성 폼 -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">댓글 작성</h5>
+            <form th:action="@{|/coment/create/${article.id}|}" th:object="${comentForm}" method="post" novalidate>
+                <div class="mb-3">
+                    <label for="content" class="form-label">내용</label>
+                    <textarea id="content" th:field="*{content}" class="form-control" rows="4" placeholder="댓글을 입력하세요..."></textarea>
+                    <div class="text-danger small mt-1" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">댓글 등록</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 목록으로 돌아가기 -->
+    <a th:href="@{/article/list}" class="btn btn-secondary">목록으로</a>
+
 </div>
+</html>

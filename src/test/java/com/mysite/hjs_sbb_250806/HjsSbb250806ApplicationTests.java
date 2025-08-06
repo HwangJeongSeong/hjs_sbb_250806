@@ -51,7 +51,6 @@ class HjsSbb250806ApplicationTests {
 	@Test
 	void testJpa3() {
 		Optional<Article> oa = this.articleRepository.findById(1);
-		//isPresent()를 통해 값이 존재한다는 것
 		if(oa.isPresent()) {
 			Article a = oa.get();
 			assertEquals("what is sbb?", a.getSubject());
@@ -89,18 +88,18 @@ class HjsSbb250806ApplicationTests {
 	@Test
 	void testJpa8() {
 		assertEquals(2, this.articleRepository.count());
-		Optional<Article> oq = this.articleRepository.findById(1);
-		assertTrue(oq.isPresent());
-		Article q = oq.get();
-		this.articleRepository.delete(q);
+		Optional<Article> oa = this.articleRepository.findById(1);
+		assertTrue(oa.isPresent());
+		Article a = oa.get();
+		this.articleRepository.delete(a);
 		assertEquals(1, this.articleRepository.count());
 	}
 
 	@Test
 	void testJpa9() {
-		Optional<Article> oq = this.articleRepository.findById(2);
-		assertTrue(oq.isPresent());
-		Article q = oq.get();
+		Optional<Article> oa = this.articleRepository.findById(2);
+		assertTrue(oa.isPresent());
+		Article q = oa.get();
 
 		Coment a = new Coment();
 		a.setContent("yes, It is produced automatically");
