@@ -9,12 +9,18 @@
 - (추가 기능이나 구현기능설명이 필요한 경우 서술)
 
 ## 미비사항 or 막힌 부분
-- ...
+- 리다이렉트 할 때 오타 써서 DataNotFoundException이 나왔지만 코드를 자세히 살펴보니 내가 자주 쓰는 오타를 찾았다
 
 ## UI/UX (화면 캡처본을 복사 붙여 넣기, url 주소 나오도록)
 - 게시글 리스트 페이지
+ <img width="1920" height="1037" alt="image" src="https://github.com/user-attachments/assets/6f7e4109-ed03-4f58-a1dd-6f4cdf23c102" />
+
 - 게시글 등록 폼 페이지
+  <img width="1918" height="1036" alt="image" src="https://github.com/user-attachments/assets/9473035e-2599-494c-adee-b37a48cc53b8" />
+
 - 게시글 상세 페이지
+  <img width="1920" height="1038" alt="image" src="https://github.com/user-attachments/assets/e4da5d76-6dea-497b-82e0-a716a22c2909" />
+
 
 ## MVC 패턴
 - ...
