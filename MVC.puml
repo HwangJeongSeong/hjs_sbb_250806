@@ -1,0 +1,64 @@
+@startuml
+package "Domain" {
+    class Article {
+        +id: Integer
+        +subject: String
+        +content: String
+        +createDate: LocalDateTime
+        +comentList: List<Coment>
+    }
+    class Coment {
+        +id: Integer
+        +content: String
+        +createDate: LocalDateTime
+        +article: Article
+    }
+}
+
+package "Controller" {
+    class ArticleController
+    class ComentController
+}
+
+package "Service" {
+    class ArticleService
+    class ComentService
+}
+
+package "Repository" {
+    class ArticleRepository
+    class ComentRepository
+}
+
+package "Form" {
+    class ArticleForm
+    class ComentForm
+}
+
+package "Template" {
+    class article_list_html
+    class article_detail_html
+    class article_form_html
+    class layout_html
+}
+
+Article "1" o-- "*" Coment : comentList
+Coment "*" --> "1" Article : article
+
+ArticleController --> ArticleService
+ArticleController --> ArticleForm
+ArticleController --> article_list_html
+ArticleController --> article_detail_html
+ArticleController --> article_form_html
+ArticleService --> ArticleRepository
+
+ComentController --> ComentService
+ComentController --> ArticleService
+ComentController --> ComentForm
+ComentController --> article_detail_html : redirect
+ComentService --> ComentRepository
+
+article_detail_html --> layout_html
+article_list_html --> layout_html
+article_form_html --> layout_html
+@enduml
