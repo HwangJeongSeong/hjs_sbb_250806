@@ -23,7 +23,7 @@ public class Article {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    private LocalDateTime crateDate;
+    private LocalDateTime createDate;
 
     @OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
     private List<Coment> comentList;
