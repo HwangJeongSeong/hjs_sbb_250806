@@ -23,7 +23,45 @@
 
 
 ## MVC 패턴
-- ...
+- 
+```
+hjs_sbb_250806
+├── build.gradle
+├── gradlew
+├── gradlew.bat
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com/mysite/hjs_sbb_250806
+    │   │       ├── article
+    │   │       │   ├── Article.java
+    │   │       │   ├── ArticleController.java
+    │   │       │   ├── ArticleRepository.java
+    │   │       │   ├── ArticleService.java
+    │   │       │   └── ArticleForm.java
+    │   │       ├── coment
+    │   │       │   ├── Coment.java
+    │   │       │   ├── ComentController.java
+    │   │       │   ├── ComentRepository.java
+    │   │       │   ├── ComentService.java
+    │   │       │   └── ComentForm.java
+    │   │       ├── DataNotFoundException.java
+    │   │       ├── HomeController.java
+    │   │       ├── MainController.java
+    │   │       └── HjsSbb250806Application.java
+    │   └── resources
+    │       ├── application.properties
+    │       └── templates
+    │           ├── article_detail.html
+    │           ├── article_form.html
+    │           ├── article_list.html
+    │           └── layout.html
+    └── test
+        └── java/com/mysite/hjs_sbb_250806/HjsSbb250806ApplicationTests.java
+```
+<img width="1154" height="437" alt="image" src="https://github.com/user-attachments/assets/dc020ca4-4fa9-4dfb-b40d-b13f877c4dab" />
+
 
 ## 스프링에서 의존성 주입(DI) 방법 3가지 방법
 - ...
