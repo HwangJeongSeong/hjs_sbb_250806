@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class ComentService {
     private final ComentRepository comentRepository;
 
-    public void create(Article article, String content) {
+    public void create (Article article, String content) {
         Coment coment = new Coment();
         coment.setContent(content);
         coment.setCreateDate(LocalDateTime.now());
